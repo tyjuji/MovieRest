@@ -3,6 +3,7 @@ using MovieRest.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MovieRestTests;
 
 namespace MovieRest.Controllers.Tests
 {
@@ -12,16 +13,16 @@ namespace MovieRest.Controllers.Tests
         // This is better
         //https://gkama.medium.com/dependency-injection-di-in-net-core-and-net-5-c-unit-tests-935651a99a2d
 
-        private IMovieRepository irepo = new MovieRepository();
+        //private IMovieRepository _irepo = new MovieRepository();
+        
+        private IMovieRepository _irepo = Helper.GetRequiredService<IMovieRepository>();
 
-        private readonly IMovieRepository _irepo;
+        //private readonly IMovieRepository _irepo;
 
-        public MovieControllerTests(IMovieRepository irepo)
-        {
-            _irepo = irepo;
-        }
-
-        public MovieControllerTests(){}
+        //public MovieControllerTests(IMovieRepository irepo)
+        //{
+        //    _irepo = irepo;
+        //}
 
         [TestMethod()]
         public void GetAllTest()
